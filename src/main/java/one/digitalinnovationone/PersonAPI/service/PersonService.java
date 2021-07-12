@@ -9,12 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-<<<<<<< HEAD
 import java.util.List;
 import java.util.stream.Collectors;
 
-=======
->>>>>>> f2eea43d4d0fb6e7702d6eaf493e4e0fa37a5dfe
 @Service
 public class PersonService {
     private PersonRepository personRepository;
@@ -37,13 +34,10 @@ public class PersonService {
                 .build();
 
     }
-<<<<<<< HEAD
 
     public List<PersonDTO> listAll() {
         List<Person> allPeople = personRepository.findAll();
         return allPeople.stream().map(personMapper::toDTO)
                 .collect(Collectors.toList());
     }
-=======
->>>>>>> f2eea43d4d0fb6e7702d6eaf493e4e0fa37a5dfe
 }
