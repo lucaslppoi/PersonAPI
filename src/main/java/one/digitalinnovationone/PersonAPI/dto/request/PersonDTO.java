@@ -11,6 +11,12 @@ import javax.validation.Valid;
 import org.hibernate.validator.constraints.br.CPF;
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> f2eea43d4d0fb6e7702d6eaf493e4e0fa37a5dfe
 import java.util.List;
 
 @Data
