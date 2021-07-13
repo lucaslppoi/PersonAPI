@@ -1,5 +1,6 @@
 package one.digitalinnovationone.PersonAPI.controller;
 
+import lombok.AllArgsConstructor;
 import one.digitalinnovationone.PersonAPI.dto.request.PersonDTO;
 import one.digitalinnovationone.PersonAPI.dto.response.MessageResponseDTO;
 import one.digitalinnovationone.PersonAPI.entities.Person;
@@ -15,15 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/people")
+@AllArgsConstructor(onConstructor =@__(@Autowired))
 public class PersonController {
 
     private final PersonService personService;
-
-    @Autowired
-    public PersonController(PersonService personService){
-        this.personService = personService;
-    }
-
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -43,10 +39,9 @@ public class PersonController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) throws PersonNotFoundException {
+    public void deleteById(@PathVariable Long id) throws PersonNotFoundException {
         personService.delete(id);
     }
-
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

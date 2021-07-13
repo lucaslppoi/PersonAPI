@@ -1,5 +1,6 @@
 package one.digitalinnovationone.PersonAPI.service;
 
+import lombok.AllArgsConstructor;
 import one.digitalinnovationone.PersonAPI.dto.mapper.PersonMapper;
 import one.digitalinnovationone.PersonAPI.dto.request.PersonDTO;
 import one.digitalinnovationone.PersonAPI.dto.response.MessageResponseDTO;
@@ -16,26 +17,20 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor(onConstructor =@__(@Autowired))
 public class PersonService {
     private PersonRepository personRepository;
 
     private final PersonMapper personMapper = PersonMapper.INSTANCE;
 
-
-    @Autowired
-    public PersonService(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
-
     public MessageResponseDTO createPerson(PersonDTO personDTO) {
         Person personToSave = personMapper.toModel(personDTO);
-
         Person savedPerson = personRepository.save(personToSave);
+
         return MessageResponseDTO
                 .builder()
                 .message("Created Person With ID " + savedPerson.getId())
                 .build();
-
     }
 
     public List<PersonDTO> listAll() {
@@ -71,6 +66,5 @@ public class PersonService {
                 .builder()
                 .message("Updated Person With ID " + savedPerson.getId())
                 .build();
-
     }
 }
